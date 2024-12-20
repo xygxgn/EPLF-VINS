@@ -111,6 +111,13 @@ void printStatistics(const Estimator &estimator, double t)
 void pubOdometry(const Estimator &estimator, const std_msgs::Header &header, Eigen::Vector3d loop_correct_t,
                  Eigen::Matrix3d loop_correct_r)
 {
+    if (estimator.solver_flag == Estimator::SolverFlag::INITIAL)
+    {
+        ofstream foutC("/home/lilabws001/exam_ws/eplfvins/src/EPLF-VINS/output/result.txt", ios::out);
+        foutC << "#timestamp(s) tx ty tz qx qy qz qw" << std::endl;
+        foutC.close();
+    }
+
     if (estimator.solver_flag == Estimator::SolverFlag::NON_LINEAR)
     {
         nav_msgs::Odometry odometry;
@@ -165,7 +172,8 @@ void pubOdometry(const Estimator &estimator, const std_msgs::Header &header, Eig
         relo_path.poses.push_back(pose_stamped);
         pub_relo_path.publish(relo_path);
 
-        ofstream foutC(VINS_RESULT_PATH, ios::app);
+        // ofstream foutC(VINS_RESULT_PATH, ios::app);
+        static ofstream foutC("/home/lilabws001/exam_ws/eplfvins/src/EPLF-VINS/output/result.txt", ios::app);
         foutC.setf(ios::fixed, ios::floatfield);
         foutC.precision(9);
         foutC << header.stamp.toSec() << " ";
@@ -177,7 +185,7 @@ void pubOdometry(const Estimator &estimator, const std_msgs::Header &header, Eig
               << tmp_Q.y() << " "
               << tmp_Q.z() << " "
               << tmp_Q.w() << endl;
-        foutC.close();
+        // foutC.close();
     }
 }
 
