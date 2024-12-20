@@ -1,3 +1,52 @@
+## ROS Noetic version of EPLF-VINS.
+
+### Prerequisites
+- **System**
+  - Ubuntu 20.04
+  - ROS Noetic
+- **Libraries**
+  - [OpenCV 4.6.0 with opencv_contrib 4.6.0](https://blog.csdn.net/qq_44998513/article/details/133778446)
+  - [Ceres Solver-1.14.0](http://ceres-solver.org/installation.html)
+
+### Build
+- **download the source package**
+  - `mkdir ~/catkin_ws/src && cd ~/catkin_ws/src`
+  - `git clone https://github.com/xygxgn/EPLF-VINS.git`
+  - `cd EPLF-VINS`
+- **build with OpenCV installed by yourself *(install in `/usr/local`)***
+  - `gedit camera_model/CMakeLists.txt`
+  - Modify `set(OpenCV_DIR "/usr/local/lib/cmake/opencv4")`
+  - `gedit image_node_b/CMakeLists.txt`
+  - Modify `set(OpenCV_DIR "/usr/local/lib/cmake/opencv4")`
+  - `gedit lf_feature_tracker/CMakeLists.txt`
+  - Modify `set(OpenCV_DIR "/usr/local/lib/cmake/opencv4")`
+  - `gedit lf_pose_graph/CMakeLists.txt`
+  - Modify `set(OpenCV_DIR "/usr/local/lib/cmake/opencv4")`
+  - `gedit lfvins_estimator/CMakeLists.txt`
+  - Modify `set(OpenCV_DIR "/usr/local/lib/cmake/opencv4")`
+  - `gedit linefeature_tracker/CMakeLists.txt`
+  - Modify `set(OpenCV_DIR "/usr/local/lib/cmake/opencv4")`
+  - `gedit sim_data_pub/CMakeLists.txt`
+  - Modify `set(OpenCV_DIR "/usr/local/lib/cmake/opencv4")`
+  - *do NOT forget source your own cv_bridge workspace*
+  - `source ~/cv_bridge/devel/setup.bash`
+  - `cd ~/catkin_ws/src`
+  - `catkin_make`
+
+- **Notes**
+  - ***The version of the OpenCV must be consistent with the version of OpenCV used by cv-bridge***
+
+### Run
+- **download the source package**
+  - `cd ~/catkin_ws`
+  - `source devel/setup.bash`
+  - `roslaunch lfvins_estimator euroc.launch`
+- **play rosbag**
+  - `rosbag play MH_01_easy.bag`
+
+If you find this work useful or interesting, please kindly give us a star :star:, thanks!
+
+
 # EPLF-VINS
 ## Real-Time Monocular Visual-Inertial SLAM With Efficient Point-Line Flow Features
 

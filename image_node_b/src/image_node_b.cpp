@@ -63,7 +63,7 @@ void callback(const sensor_msgs::PointCloudConstPtr &point_feature_msg,
     cv::circle(img1, endPoint, 2, cv::Scalar(0, 255, 0), 2);
   }
 
-  cv::remap(img1, show_img, undist_map1_, undist_map2_, CV_INTER_LINEAR);
+  cv::remap(img1, show_img, undist_map1_, undist_map2_, cv::INTER_LINEAR);
   for (int i = 0; i < line_feature_msg->points.size(); i++)
   {
     // cv::Point2f startPoint = cv::Point2f(line_feature_msg->channels[3].values[i], line_feature_msg->channels[4].values[i]);
@@ -77,7 +77,7 @@ void callback(const sensor_msgs::PointCloudConstPtr &point_feature_msg,
 
   sensor_msgs::ImagePtr output_msg = cv_bridge::CvImage(std_msgs::Header(), "bgr8", show_img).toImageMsg();
   pub_point_line.publish(output_msg);
-  // cv::namedWindow("LSD matches", CV_WINDOW_NORMAL);
+  // cv::namedWindow("LSD matches", cv::WINDOW_NORMAL);
   // cv::imshow( "LSD matches", show_img );
   // cv::waitKey(5);
 }

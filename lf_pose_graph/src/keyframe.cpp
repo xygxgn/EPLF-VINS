@@ -278,7 +278,7 @@ bool KeyFrame::findConnection(KeyFrame* old_kf)
 	        cv::Mat gray_img, loop_match_img;
 	        cv::Mat old_img = old_kf->image;
 	        cv::hconcat(image, old_img, gray_img);
-	        cvtColor(gray_img, loop_match_img, CV_GRAY2RGB);
+	        cvtColor(gray_img, loop_match_img, cv::COLOR_GRAY2RGB);
 	        for(int i = 0; i< (int)point_2d_uv.size(); i++)
 	        {
 	            cv::Point2f cur_pt = point_2d_uv[i];
@@ -316,7 +316,7 @@ bool KeyFrame::findConnection(KeyFrame* old_kf)
             cv::Mat old_img = old_kf->image;
             cv::hconcat(image, gap_image, gap_image);
             cv::hconcat(gap_image, old_img, gray_img);
-            cvtColor(gray_img, loop_match_img, CV_GRAY2RGB);
+            cvtColor(gray_img, loop_match_img, cv::COLOR_GRAY2RGB);
 	        for(int i = 0; i< (int)matched_2d_cur.size(); i++)
 	        {
 	            cv::Point2f cur_pt = matched_2d_cur[i];
@@ -372,7 +372,7 @@ bool KeyFrame::findConnection(KeyFrame* old_kf)
             cv::Mat old_img = old_kf->image;
             cv::hconcat(image, gap_image, gap_image);
             cv::hconcat(gap_image, old_img, gray_img);
-            cvtColor(gray_img, loop_match_img, CV_GRAY2RGB);
+            cvtColor(gray_img, loop_match_img, cv::COLOR_GRAY2RGB);
 	        for(int i = 0; i< (int)matched_2d_cur.size(); i++)
 	        {
 	            cv::Point2f cur_pt = matched_2d_cur[i];
@@ -422,7 +422,7 @@ bool KeyFrame::findConnection(KeyFrame* old_kf)
 	            cv::Mat old_img = old_kf->image;
 	            cv::hconcat(image, gap_image, gap_image);
 	            cv::hconcat(gap_image, old_img, gray_img);
-	            cvtColor(gray_img, loop_match_img, CV_GRAY2RGB);
+	            cvtColor(gray_img, loop_match_img, cv::COLOR_GRAY2RGB);
 	            for(int i = 0; i< (int)matched_2d_cur.size(); i++)
 	            {
 	                cv::Point2f cur_pt = matched_2d_cur[i];

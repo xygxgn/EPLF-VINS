@@ -1,4 +1,5 @@
 #include "feature_tracker.h"
+#include <fstream>
 
 int FeatureTracker::n_id = 0;
 

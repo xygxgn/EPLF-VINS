@@ -4,6 +4,7 @@
 #include <sensor_msgs/PointCloud.h>
 #include <cv_bridge/cv_bridge.h>
 #include <message_filters/subscriber.h>
+#include <fstream>
 
 #include "linefeature_tracker.h"
 
@@ -115,7 +116,7 @@ void img_callback(const sensor_msgs::ImageConstPtr &img_msg)
         {
             cv_bridge::CvImageConstPtr ptr1 = cv_bridge::toCvCopy(img_msg, sensor_msgs::image_encodings::BGR8);
             cv::Mat tmp_img = ptr1->image;
-            cv::cvtColor(trackerData.cur_img->img, tmp_img, CV_GRAY2RGB);
+            cv::cvtColor(trackerData.cur_img->img, tmp_img, cv::COLOR_GRAY2RGB);
 
             const vector<Line> &un_lines = trackerData.cur_img->vecLine;
             for (unsigned int j = 0; j < trackerData.cur_img->vecLine.size(); j++)
@@ -152,7 +153,7 @@ void img_callback(const sensor_msgs::ImageConstPtr &img_msg)
 #if _SHOWLINEFLOW_
             cv_bridge::CvImageConstPtr ptr1 = cv_bridge::toCvCopy(img_msg, sensor_msgs::image_encodings::BGR8);
             cv::Mat detect_img = ptr1->image;
-            cv::cvtColor(trackerData.cur_img->img, detect_img, CV_GRAY2RGB);
+            cv::cvtColor(trackerData.cur_img->img, detect_img, cv::COLOR_GRAY2RGB);
             for (unsigned int m = 0; m < trackerData.cur_img->lineRec.size(); m++)
                 for (unsigned int j = 0; j < trackerData.cur_img->lineRec[m].size(); j++)
                 {

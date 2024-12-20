@@ -16,7 +16,9 @@ find_package(catkin REQUIRED COMPONENTS
     camera_model
     )
 
-find_package(OpenCV 3.4.16 REQUIRED)
+set(OpenCV_DIR "/usr/local/lib/cmake/opencv4")
+find_package(OpenCV REQUIRED)
+# find_package(OpenCV 3.4.16 REQUIRED)
 
 find_package(Ceres REQUIRED)
 

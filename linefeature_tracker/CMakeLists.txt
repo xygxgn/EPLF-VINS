@@ -19,7 +19,9 @@ find_package(catkin REQUIRED COMPONENTS
   sensor_msgs
 )
 
-find_package(OpenCV 3.4.16 REQUIRED)
+set(OpenCV_DIR "/usr/local/lib/cmake/opencv4")
+find_package(OpenCV REQUIRED)
+# find_package(OpenCV 3.4.16 REQUIRED)
 find_package(Eigen3 REQUIRED)
 
 # # System dependencies are found with CMake's conventions

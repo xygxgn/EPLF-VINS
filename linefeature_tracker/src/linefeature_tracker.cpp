@@ -1,5 +1,6 @@
 #include "linefeature_tracker.h"
 #include <math.h>
+#include <fstream>
 // #include "line_descriptor/src/precomp_custom.hpp"
 
 vector<vector<double>> param;
@@ -749,7 +750,7 @@ void LineFeatureTracker::readImage(const cv::Mat &_img)
     frame_cnt++;
 
     // undistortion
-    cv::remap(_img, img, undist_map1_, undist_map2_, CV_INTER_LINEAR);
+    cv::remap(_img, img, undist_map1_, undist_map2_, cv::INTER_LINEAR);
 
     if (EQUALIZE) // 直方图均衡化
     {
