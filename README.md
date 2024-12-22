@@ -30,7 +30,7 @@
   - Modify `set(OpenCV_DIR "/usr/local/lib/cmake/opencv4")`
   - *do NOT forget source your own cv_bridge workspace*
   - `source ~/cv_bridge/devel/setup.bash`
-  - `cd ~/catkin_ws/src`
+  - `cd ~/catkin_ws/`
   - `catkin_make`
 
 - **Notes**
